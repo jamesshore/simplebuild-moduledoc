@@ -1,0 +1,35 @@
+{
+  "name": "simplebuild-moduledoc",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "description": "Autogenerate README files for simplebuild modules",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesshore/simplebuild-moduledoc"
+  },
+  "keywords": [
+    "simplebuild",
+    "documentation"
+  ],
+  "author": "James Shore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamesshore/simplebuild-moduledoc/issues"
+  },
+  "homepage": "https://github.com/jamesshore/simplebuild-moduledoc",
+  "devDependencies": {
+    "jshint": "~2.4.0",
+    "jake": "~0.7.6",
+    "mocha": "~1.16.2",
+    "expect.js": "~0.2.0"
+  },
+  "dependencies": {
+    "simplebuild": "~0.2.0"
+  }
+}

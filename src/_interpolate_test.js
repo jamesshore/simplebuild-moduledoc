@@ -3,11 +3,12 @@
 
 var expect = require("chai").expect;
 
-var interpolator = require("./interpolator.js");
+var interpolate = require("./interpolate.js");
 
 describe("Interpolator", function() {
 
-	it("should run tests", function() {
+	it("should do nothing if template not present", function() {
+		expect(interpolate.string("foo", {})).to.equal("foo");
 	});
 
 });

@@ -27,8 +27,8 @@
     "jshint": "~2.4.0",
     "jake": "~0.7.6",
     "mocha": "~1.16.2",
-    "expect.js": "~0.2.0",
-    "simplebuild-jshint": "~0.1.0"
+    "simplebuild-jshint": "~0.1.0",
+    "chai": "~1.8.1"
   },
   "dependencies": {
     "simplebuild": "~0.2.0"

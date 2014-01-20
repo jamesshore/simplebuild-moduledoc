@@ -8,7 +8,6 @@ var messages = require("./messages.js");
 describe("Descriptor", function() {
 
 	describe("transformModules", function() {
-
 		it("transforms all tasks", function() {
 			var module = {
 				foo: function() {},
@@ -32,6 +31,14 @@ describe("Descriptor", function() {
 				analyze.transformModule(module);
 			}).to.throw(Error, messages.EMPTY_MODULE);
 		});
+	});
 
+	describe("transformTask", function() {
+		it("provides name", function() {
+
+			expect(analyze.transformTask({}, "foo")).to.deep.equal({
+				name: "foo"
+			});
+		});
 	});
 });

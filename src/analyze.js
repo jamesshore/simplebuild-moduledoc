@@ -1,4 +1,8 @@
 // Copyright (c) 2014 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
+
+// This module analyzes simplebuild modules (and tasks, etc.) and creates data structures that can be used
+// in human-readable documentation.
+
 "use strict";
 
 var messages = require("./messages.js");

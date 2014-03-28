@@ -13,9 +13,9 @@ describe("Descriptor", function() {
 	describe("transformModules", function() {
 		it("transforms all tasks", function() {
 			var module = {
-				foo: function() {},
-				bar: function() {},
-				baz: function() {}
+				foo: createModule(),
+				bar: createModule(),
+				baz: createModule()
 			};
 
 			expect(analyze.transformModule(module)).to.deep.equal({
@@ -25,6 +25,15 @@ describe("Descriptor", function() {
 					analyze.transformTask(module, "baz")
 				]
 			});
+
+			function createModule() {
+				var module = function() {};
+				module.descriptors = {
+					title: "Title",
+					description: "Description"
+				};
+				return module;
+			}
 		});
 
 		it("throws exception if module is empty", function() {
@@ -36,14 +45,29 @@ describe("Descriptor", function() {
 		});
 	});
 
-	// TODO: NEXT: Convert documentation to summary.
 
 	describe("transformTask", function() {
-		it("provides name", function() {
+		var module = {
+			foo: {
+				descriptors: {
+					title: "Foo Task",
+					description: "This documents the 'Foo' task. The first sentence is the summary."
+				}
+			}
+		};
 
-			expect(analyze.transformTask({}, "foo")).to.deep.equal({
-				name: "foo"
+		it("translates module descriptors to documentation data structure", function() {
+			expect(analyze.transformTask(module, "foo")).to.deep.equal({
+				name: "foo",
+				description: "This documents the 'Foo' task. The first sentence is the summary."
+				// TODO: summary
+				// more TBD
 			});
 		});
+
+		// TODO: should error when task name doesn't exist
+
+		// TODO: Thorough testing of summary logic
+
 	});
 });

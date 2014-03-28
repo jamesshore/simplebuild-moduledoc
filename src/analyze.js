@@ -13,7 +13,9 @@ exports.transformModule = function(module) {
 };
 
 exports.transformTask = function(module, key) {
+	var descriptors = module[key].descriptors;
 	return {
-		name: key
+		name: key,
+		description: descriptors.description
 	};
 };

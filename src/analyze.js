@@ -3,6 +3,8 @@
 
 var messages = require("./messages.js");
 
+var SUMMARY_REGEX = /^(.*?[.!?])\s/;
+
 exports.transformModule = function(module) {
 	var tasks = Object.keys(module);
 	if (tasks.length === 0) throw new Error(messages.EMPTY_MODULE);
@@ -13,9 +15,20 @@ exports.transformModule = function(module) {
 };
 
 exports.transformTask = function(module, key) {
-	var descriptors = module[key].descriptors;
+	var description = module[key].descriptors.description;
+
+	var summary = exports.summarizeDescription(description);
+
 	return {
 		name: key,
-		description: descriptors.description
+		summary: summary,
+		description: description
 	};
+};
+
+exports.summarizeDescription = function(description) {
+	var match = SUMMARY_REGEX.exec(description);
+
+	if (match) return match[1];
+	else return description;
 };

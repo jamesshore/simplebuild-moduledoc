@@ -30,7 +30,7 @@ describe("Descriptor", function() {
 				var module = function() {};
 				module.descriptors = {
 					title: "Title",
-					description: "Description"
+					description: "Description."
 				};
 				return module;
 			}
@@ -59,15 +59,38 @@ describe("Descriptor", function() {
 		it("translates module descriptors to documentation data structure", function() {
 			expect(analyze.transformTask(module, "foo")).to.deep.equal({
 				name: "foo",
+				summary: "This documents the 'Foo' task.",
 				description: "This documents the 'Foo' task. The first sentence is the summary."
-				// TODO: summary
 				// more TBD
 			});
 		});
 
 		// TODO: should error when task name doesn't exist
+	});
 
-		// TODO: Thorough testing of summary logic
+	describe("summarizeDescription", function() {
+		it("returns the entire description if there are no sentences", function() {
+			expect(analyze.summarizeDescription("Foo")).to.equal("Foo");
+		});
 
+		it("returns the first sentence if there is just one sentence", function() {
+			expect(analyze.summarizeDescription("A sentence.")).to.equal("A sentence.");
+		});
+
+		it("ignores spaces after the first sentence", function() {
+			expect(analyze.summarizeDescription("A sentence.  ")).to.equal("A sentence.");
+		});
+
+		it("only captures the first sentence", function() {
+			expect(analyze.summarizeDescription("A sentence. A second sentence.")).to.equal("A sentence.");
+			expect(analyze.summarizeDescription("A sentence! A second sentence.")).to.equal("A sentence!");
+			expect(analyze.summarizeDescription("A sentence? A second sentence.")).to.equal("A sentence?");
+		});
+
+		it("expects sentences to be followed by a space (so acronyms aren't captured)", function() {
+			expect(analyze.summarizeDescription("Project G.O.A.T. It's weird.")).to.equal("Project G.O.A.T.");
+			expect(analyze.summarizeDescription("What the #$!?@ is that? Nothing.")).to.equal("What the #$!?@ is that?");
+			expect(analyze.summarizeDescription("A Dark!Harry fanfic. Not fit for human consumption.")).to.equal("A Dark!Harry fanfic.");
+		});
 	});
 });

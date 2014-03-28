@@ -1,4 +1,7 @@
 // Copyright (c) 2014 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
+
+// This module analyzes a simplebuild module and converts it to a data structure containing documentation strings.
+
 "use strict";
 
 var expect = require("chai").expect;
@@ -32,6 +35,8 @@ describe("Descriptor", function() {
 			}).to.throw(Error, messages.EMPTY_MODULE);
 		});
 	});
+
+	// TODO: NEXT: Convert documentation to summary.
 
 	describe("transformTask", function() {
 		it("provides name", function() {

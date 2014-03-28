@@ -15,15 +15,20 @@ exports.transformModule = function(module) {
 };
 
 exports.transformTask = function(module, key) {
-	var description = module[key].descriptors.description;
-
-	var summary = exports.summarizeDescription(description);
+	var task = safeGet(module[key], messages.NO_SUCH_TASK);
+	var descriptors = safeGet(task.descriptors, messages.NO_TASK_DESCRIPTORS);
+	var description = safeGet(descriptors.description, messages.NO_TASK_DESCRIPTION);
 
 	return {
 		name: key,
-		summary: summary,
+		summary: exports.summarizeDescription(description),
 		description: description
 	};
+
+	function safeGet(thing, error) {
+		if (thing === undefined) throw new Error(error + " [" + key + "]");
+		return thing;
+	}
 };
 
 exports.summarizeDescription = function(description) {

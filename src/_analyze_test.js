@@ -47,16 +47,16 @@ describe("Descriptor", function() {
 
 
 	describe("transformTask", function() {
-		var module = {
-			foo: {
-				descriptors: {
-					title: "Foo Task",
-					description: "This documents the 'Foo' task. The first sentence is the summary."
+		it("translates task descriptors", function() {
+			var module = {
+				foo: {
+					descriptors: {
+						title: "Foo Task",
+						description: "This documents the 'Foo' task. The first sentence is the summary."
+					}
 				}
-			}
-		};
+			};
 
-		it("translates module descriptors to documentation data structure", function() {
 			expect(analyze.transformTask(module, "foo")).to.deep.equal({
 				name: "foo",
 				summary: "This documents the 'Foo' task.",
@@ -65,7 +65,23 @@ describe("Descriptor", function() {
 			});
 		});
 
-		// TODO: should error when task name doesn't exist
+		it("throws exception if task doesn't exist", function() {
+			expect(function() {
+				analyze.transformTask({}, "foo");
+			}).to.throw(Error, messages.NO_SUCH_TASK + " [foo]");
+		});
+
+		it("throws exception if task doesn't have descriptors", function() {
+			expect(function() {
+				analyze.transformTask({ foo: {} }, "foo");
+			}).to.throw(Error, messages.NO_TASK_DESCRIPTORS + " [foo]");
+		});
+
+		it("throws exception if task doesn't have description", function() {
+			expect(function() {
+				analyze.transformTask({ foo: { descriptors: {} } }, "foo");
+			}).to.throw(Error, messages.NO_TASK_DESCRIPTION + " [foo]");
+		});
 	});
 
 	describe("summarizeDescription", function() {

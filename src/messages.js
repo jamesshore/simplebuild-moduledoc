@@ -3,6 +3,9 @@
 
 // Messages
 exports.EMPTY_MODULE = "Module doesn't contain any task.";
+exports.NO_SUCH_TASK = "Module doesn't contain requested task.";
+exports.NO_TASK_DESCRIPTORS = "Task doesn't have any descriptors.";
+exports.NO_TASK_DESCRIPTION = "Task doesn't have a description.";
 
 //exports.VALIDATION_FAILED = "JSHint failed.";
 //exports.OPTIONS_MUST_BE_OBJECT = "Options parameter must be an object.";

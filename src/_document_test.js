@@ -9,8 +9,8 @@ describe("template interpolation", function() {
 		foo: function() {},
 		bar: function() {}
 	};
-	module.foo.descriptors = { description: "Foo summary" };
-	module.bar.descriptors = { description: "Bar summary" };
+	module.foo.descriptors = { description: "Foo summary", options: {} };
+	module.bar.descriptors = { description: "Bar summary", options: {} };
 
 	var moduleDescriptors = {
 		name: "example-module",

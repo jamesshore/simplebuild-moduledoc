@@ -25,7 +25,8 @@ describe("Descriptor", function() {
 				var module = function() {};
 				module.descriptors = {
 					title: "Title",
-					description: "Description."
+					description: "Description.",
+					options: {}
 				};
 				return module;
 			}

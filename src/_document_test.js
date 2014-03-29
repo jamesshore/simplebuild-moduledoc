@@ -71,13 +71,6 @@ describe("template interpolation", function() {
 			document.usageDetails(module) + "\n" +
 			"\n" +
 			"\n" +
-			"## Examples\n" +
-			"\n" +
-			"This library is designed to be easy to integrate with any task automation tool:\n" +
-			"\n" +
-			"(TO BE DONE)\n" +
-			"\n" +
-			"\n" +
 			"## About Simplebuild\n" +
 			"\n" +
 			"This library is a simplebuild module. In addition to being used as a standalone library (as described above), it can also be used with simplebuild extensions and mappers. For more information about simplebuild, see [the Simplebuild GitHub page](https://github.com/jamesshore/simplebuild).\n" +

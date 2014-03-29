@@ -33,13 +33,6 @@ Create a README file for a Simplebuild module. The text of the README is generat
 * `failure(message)`: called if `createReadme` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.
 
 
-## Examples
-
-This library is designed to be easy to integrate with any task automation tool:
-
-(TO BE DONE)
-
-
 ## About Simplebuild
 
 This library is a simplebuild module. In addition to being used as a standalone library (as described above), it can also be used with simplebuild extensions and mappers. For more information about simplebuild, see [the Simplebuild GitHub page](https://github.com/jamesshore/simplebuild).

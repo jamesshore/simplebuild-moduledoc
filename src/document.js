@@ -11,14 +11,14 @@ var USAGE_SUMMARY = TEMPLATES + "usage_summary.handlebars";
 var README = TEMPLATES + "readme.handlebars";
 
 exports.readme = function(moduleDescriptors, module) {
-	moduleDescriptors.usageSummary = exports.taskSummaries(module);
+	moduleDescriptors.usageSummary = exports.usageSummary(module);
 	moduleDescriptors.usageDetails = "(TO BE DONE)";
 	moduleDescriptors.examples = "(TO BE DONE)";
 
 	return interpolate.file(README, moduleDescriptors);
 };
 
-exports.taskSummaries = function(module) {
+exports.usageSummary = function(module) {
 	return interpolate.file(USAGE_SUMMARY, {
 		task: analyze.transformModule(module)
 	});

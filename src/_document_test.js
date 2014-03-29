@@ -22,7 +22,7 @@ describe("document", function() {
 		copyright: "Example copyright"
 	};
 
-	it("readme analyzes module and interpolates it with 'readme' template", function() {
+	it("readme", function() {
 		expect(document.readme(moduleDescriptors, module)).to.equal("" +
 			"# example-module\n" +
 			"\n" +
@@ -42,7 +42,7 @@ describe("document", function() {
 			"\n" +
 			"This library provides these functions:\n" +
 			"\n" +
-			document.taskSummaries(module) + "\n" +
+			document.usageSummary(module) + "\n" +
 			"\n" +
 			"(TO BE DONE)\n" +
 			"\n" +
@@ -88,8 +88,8 @@ describe("document", function() {
 
 //TODO	it("taskDetails analyzes module and interpolates it with 'usage details' template");
 
-	it("taskSummaries analyzes module and interpolates it with 'usage summary' template", function() {
-		expect(document.taskSummaries(module)).to.equal("" +
+	it("usage summary", function() {
+		expect(document.usageSummary(module)).to.equal("" +
 			"* `foo`: Foo summary\n" +
 			"* `bar`: Bar summary\n\n"
 		);

@@ -113,7 +113,28 @@ describe("moduledoc module", function() {
 		expectFailure(messages.MODULE_OPTION_MUST_BE_OBJECT);
 	});
 
-	// TODO  it("fails appropriately when 'descriptors' not defined")
+	it("fails when 'descriptors' is not defined", function() {
+		moduledoc.createReadme({
+			module: module
+		}, success, failure);
+		expectFailure(messages.NO_DESCRIPTORS_OPTION);
+	});
+
+	it("fails when 'descriptors' is null", function() {
+		moduledoc.createReadme({
+			module: module,
+			descriptors: null
+		}, success, failure);
+		expectFailure(messages.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL);
+	});
+
+	it("fails when 'descriptors' is not an object", function() {
+		moduledoc.createReadme({
+			module: module,
+			descriptors: 123
+		}, success, failure);
+		expectFailure(messages.DESCRIPTORS_OPTION_MUST_BE_OBJECT);
+	});
 
 	function success() {
 		successArgs = Array.prototype.slice.call(arguments);

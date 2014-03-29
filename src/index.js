@@ -18,8 +18,11 @@ exports.createReadme = function createReadme(options, success, failure) {
 	if (options.module === null) return failure(messages.MODULE_OPTION_MUST_NOT_BE_NULL);
 	if (typeof options.module !== "object") return failure(messages.MODULE_OPTION_MUST_BE_OBJECT);
 
-	fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
+	if (options.descriptors === undefined) return failure(messages.NO_DESCRIPTORS_OPTION);
+	if (options.descriptors === null) return failure(messages.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL);
+	if (typeof options.descriptors !== "object") return failure(messages.DESCRIPTORS_OPTION_MUST_BE_OBJECT);
 
+	fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
 	return success();
 };
 

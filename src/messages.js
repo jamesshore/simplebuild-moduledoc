@@ -4,10 +4,16 @@
 // Messages
 exports.OPTIONS_MUST_BE_OBJECT = "Options parameter must be an object.";
 exports.OPTIONS_MUST_NOT_BE_NULL = "Options parameter must not be null.";
+
 exports.OUTPUT_FILE_MUST_BE_STRING = "Output file must be a string.";
+
 exports.NO_MODULE_OPTION = "Need 'module' option containing the simplebuild module to document.";
+exports.MODULE_OPTION_MUST_BE_OBJECT = "'module' option must be an object.";
 exports.MODULE_OPTION_MUST_NOT_BE_NULL = "'module' option must not be null.";
-exports.MODULE_OPTION_MUST_BE_OBJECT = "'module' option must be an object containing task functions.";
+
+exports.NO_DESCRIPTORS_OPTION = "Need 'descriptors' option describing the module to document.";
+exports.DESCRIPTORS_OPTION_MUST_BE_OBJECT = "'descriptors' option must be an object.";
+exports.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL = "'descriptors' option must not be null.";
 
 // Errors
 exports.EMPTY_MODULE = "Module doesn't contain any task.";

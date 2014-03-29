@@ -33,6 +33,15 @@ exports.transformTask = function(module, key) {
 	}
 };
 
+exports.transformOptions = function(options) {
+	return Object.keys(options).map(function(key) {
+		return {
+			name: key,
+			description: options[key].description
+		};
+	});
+};
+
 exports.summarizeDescription = function(description) {
 	var match = SUMMARY_REGEX.exec(description);
 

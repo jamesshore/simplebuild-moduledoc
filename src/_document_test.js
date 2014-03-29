@@ -100,6 +100,8 @@ describe("template interpolation", function() {
 
 //TODO	it("taskDetails analyzes module and interpolates it with 'usage details' template");
 
+	// todo: what about tasks with no options?
+
 	it("usage summary", function() {
 		expect(document.usageSummary(module)).to.equal("" +
 			"* `foo`: Foo summary\n" +

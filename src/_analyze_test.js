@@ -79,6 +79,34 @@ describe("Descriptor", function() {
 		});
 	});
 
+
+	describe("transformOptions", function() {
+		it("translates task option", function() {
+			var options = {
+				option1: {
+					description: "Option 1 description."
+				},
+				option2: {
+					description: "Option 2 description."
+				}
+			};
+
+			expect(analyze.transformOptions(options)).to.deep.equal([
+				{
+					name: "option1",
+					description: "Option 1 description."
+				},
+				{
+					name: "option2",
+					description: "Option 2 description."
+				}
+			]);
+		});
+
+		// todo: throw exception if no description
+	});
+
+
 	describe("summarizeDescription", function() {
 		it("returns the entire description if there are no sentences", function() {
 			expect(analyze.summarizeDescription("Foo")).to.equal("Foo");

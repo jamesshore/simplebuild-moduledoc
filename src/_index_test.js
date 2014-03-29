@@ -5,6 +5,7 @@ var fs = require("fs");
 var expect = require("chai").expect;
 var moduledoc = require("./index.js");
 var document = require("./document.js");
+var messages = require("./messages.js");
 
 describe("moduledoc module", function() {
 	var module = {
@@ -70,7 +71,15 @@ describe("moduledoc module", function() {
 		}
 	});
 
-	// TODO  it("fails appropriately when 'output' is not a string")
+	it("fails appropriately when 'output' is not a string", function() {
+		moduledoc.createReadme({
+			module: module,
+			descriptrs: moduleDescriptors,
+			output: 99
+		}, success, failure);
+		expectFailure(messages.OUTPUT_FILE_MUST_BE_STRING);
+	});
+
 	// TODO  it("fails appropriately when 'module' not defined")
 	// TODO  it("fails appropriately when 'descriptors' not defined")
 
@@ -79,7 +88,7 @@ describe("moduledoc module", function() {
 	}
 
 	function failure() {
-		failureArgs = arguments;
+		failureArgs = Array.prototype.slice.call(arguments);
 	}
 
 	function expectSuccess() {

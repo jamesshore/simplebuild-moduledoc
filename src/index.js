@@ -9,6 +9,7 @@ var messages = require("./messages");
 
 exports.createReadme = function createReadme(options, success, failure) {
 	var output = options.output || "./README.md";
+	if (typeof output !== "string") return failure(messages.OUTPUT_FILE_MUST_BE_STRING);
 
 	fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
 

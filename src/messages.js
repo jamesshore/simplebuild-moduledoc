@@ -2,6 +2,10 @@
 "use strict";
 
 // Messages
+exports.OUTPUT_FILE_MUST_BE_STRING = "Output file must be a string.";
+
+
+// Errors
 exports.EMPTY_MODULE = "Module doesn't contain any task.";
 exports.NO_SUCH_TASK = "Module doesn't contain requested task.";
 exports.NO_TASK_DESCRIPTORS = "Task doesn't have any descriptors.";

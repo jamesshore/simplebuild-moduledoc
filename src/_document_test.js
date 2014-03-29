@@ -8,14 +8,17 @@ describe("document", function() {
 	var module = {
 		foo: { descriptors: { description: "Foo summary" } },
 		bar: { descriptors: { description: "Bar summary" } },
-		baz: { descriptors: { description: "Baz summary" } }
 	};
+
+//	it("readme analyzes module and interpolates it with 'readme' template", function() {
+//		expect(document.readme(module)).to.equal("" +
+//			"")
+//	});
 
 	it("taskSummaries analyzes module and interpolates it with 'usage summary' template", function() {
 		expect(document.taskSummaries(module)).to.equal("" +
 			"* `foo`: Foo summary\n" +
-			"* `bar`: Bar summary\n" +
-			"* `baz`: Baz summary\n\n"
+			"* `bar`: Bar summary\n\n"
 		);
 	});
 

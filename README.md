@@ -4,6 +4,8 @@ Autogenerate README files for simplebuild modules.
 
 [Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.
 
+This README is an example of the output of this tool. It was generated from the descriptors in [messages.js](./src/messages.js).
+
 
 ## Installation
 

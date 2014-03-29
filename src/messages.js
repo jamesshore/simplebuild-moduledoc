@@ -29,7 +29,9 @@ exports.NO_OPTION_DESCRIPTION = "Option doesn't have a description.";
 exports.MODULE_DESCRIPTORS = {
 	name: "moduledoc",
 	summary: "Autogenerate README files for simplebuild modules.",
-	description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.",
+	description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.\n" +
+		"\n" +
+		"This README is an example of the output of this tool. It was generated from the descriptors in [messages.js](./src/messages.js).",
 	copyright: "Copyright (c) 2014 James Shore"
 };
 

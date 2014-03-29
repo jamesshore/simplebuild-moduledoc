@@ -4,10 +4,7 @@
 var expect = require("chai").expect;
 var document = require("./document.js");
 
-
-//TODO: ensure that templates are loaded even if current directory is different
-
-describe("document", function() {
+describe("template interpolation", function() {
 	var module = {
 		foo: function() {},
 		bar: function() {}
@@ -21,6 +18,21 @@ describe("document", function() {
 		description: "A detailed description",
 		copyright: "Example copyright"
 	};
+
+	it("finds templates even if working directory has changed", function() {
+		var cwd = process.cwd();
+		var currentDir = document.usageSummary(module);
+		var otherDir;
+		try {
+			process.chdir("temp_files");
+			otherDir = document.usageSummary(module);
+		}
+		finally {
+			process.chdir(cwd);
+		}
+
+		expect(currentDir).to.equal(otherDir);
+	});
 
 	it("readme", function() {
 		expect(document.readme(moduleDescriptors, module)).to.equal("" +

@@ -3,12 +3,13 @@
 
 // This module analyzes simplebuild modules and converts them human-readable documents.
 
+var path = require("path");
 var analyze = require("./analyze.js");
 var interpolate = require("./interpolate.js");
 
-var TEMPLATES = "./templates/";
-var USAGE_SUMMARY = TEMPLATES + "usage_summary.handlebars";
-var README = TEMPLATES + "readme.handlebars";
+var TEMPLATES_DIR = thisDir() + "/../templates";
+var USAGE_SUMMARY = TEMPLATES_DIR + "/usage_summary.handlebars";
+var README = TEMPLATES_DIR + "/readme.handlebars";
 
 exports.readme = function(moduleDescriptors, module) {
 	moduleDescriptors.usageSummary = exports.usageSummary(module);
@@ -23,3 +24,7 @@ exports.usageSummary = function(module) {
 		task: analyze.transformModule(module)
 	});
 };
+
+function thisDir() {
+	return path.dirname(module.filename);
+}

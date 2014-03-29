@@ -8,8 +8,9 @@ var analyze = require("./analyze.js");
 var interpolate = require("./interpolate.js");
 
 var TEMPLATES_DIR = thisDir() + "/../templates";
-var USAGE_SUMMARY = TEMPLATES_DIR + "/usage_summary.handlebars";
 var README = TEMPLATES_DIR + "/readme.handlebars";
+var USAGE_SUMMARY = TEMPLATES_DIR + "/usage_summary.handlebars";
+var USAGE_DETAILS = TEMPLATES_DIR + "/usage_details.handlebars";
 
 exports.readme = function(moduleDescriptors, module) {
 	moduleDescriptors.usageSummary = exports.usageSummary(module);
@@ -20,11 +21,19 @@ exports.readme = function(moduleDescriptors, module) {
 };
 
 exports.usageSummary = function(module) {
-	return interpolate.file(USAGE_SUMMARY, {
-		task: analyze.transformModule(module)
-	});
+	return interpolate.file(USAGE_SUMMARY, analyzeModule(module));
+};
+
+exports.usageDetails = function(module) {
+	return interpolate.file(USAGE_DETAILS, analyzeModule(module));
 };
 
 function thisDir() {
 	return path.dirname(module.filename);
+}
+
+function analyzeModule(module) {
+	return {
+		task: analyze.transformModule(module)
+	};
 }

@@ -9,8 +9,21 @@ describe("template interpolation", function() {
 		foo: function() {},
 		bar: function() {}
 	};
-	module.foo.descriptors = { description: "Foo summary", options: {} };
-	module.bar.descriptors = { description: "Bar summary", options: {} };
+	module.foo.descriptors = {
+		description: "Foo summary",
+		options: {
+			option1: {
+				description: "Option 1."
+			},
+			option2: {
+				description: "Option 2."
+			}
+		}
+	};
+	module.bar.descriptors = {
+		description: "Bar summary",
+		options: {}
+	};
 
 	var moduleDescriptors = {
 		name: "example-module",
@@ -98,10 +111,6 @@ describe("template interpolation", function() {
 		);
 	});
 
-//TODO	it("taskDetails analyzes module and interpolates it with 'usage details' template");
-
-	// todo: what about tasks with no options?
-
 	it("usage summary", function() {
 		expect(document.usageSummary(module)).to.equal("" +
 			"* `foo`: Foo summary\n" +
@@ -109,15 +118,46 @@ describe("template interpolation", function() {
 		);
 	});
 
+
+	// todo: what about tasks with no options?
+
+	it("usage details", function() {
+		expect(document.usageDetails(module)).to.equal("\n" +
+			"### `foo(options, success, failure)`\n" +
+			"\n" +
+			"Foo summary\n" +
+			"\n" +
+			"* `options`: an object containing the following properties:\n" +
+			"    * `option1`: Option 1.\n" +
+			"    * `option2`: Option 2.\n" +
+			"\n" +
+			"* `success()`: called if `foo` finishes successfully.\n" +
+			"\n" +
+			"* `failure(message)`: called if `foo` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
+			"\n" +
+			"\n" +
+			"### `bar(options, success, failure)`\n" +
+			"\n" +
+			"Bar summary\n" +
+			"\n" +
+			"* `options`: an object containing the following properties:\n" +
+			"\n" +
+			"* `success()`: called if `bar` finishes successfully.\n" +
+			"\n" +
+			"* `failure(message)`: called if `bar` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
+			"\n"
+		);
+	});
+
 /*
 {{#each task}}
 # `{{signature}}`
 
-{{documentation}}
+{{description}}
 
 * `options`: an object containing the following properties:
 {{#each options}}
-    * `{{name}}`: {{documentation}}
+    * `{{name}}`: {{description}}
 {{/each}}
 
 * `success()`: called if `{{name}}` finishes successfully.

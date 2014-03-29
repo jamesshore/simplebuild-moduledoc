@@ -1,13 +1,11 @@
 {{#each task}}
-# `{{signature}}`
+### `{{signature}}`
 
 {{description}}
 
 * `options`: an object containing the following properties:
-{{#each options}}
-    * `{{name}}`: {{description}}
+{{#each options}}    * `{{name}}`: {{description}}
 {{/each}}
-
 * `success()`: called if `{{name}}` finishes successfully.
 
 * `failure(message)`: called if `{{name}}` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.

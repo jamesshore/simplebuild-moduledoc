@@ -88,6 +88,13 @@ describe("document", function() {
 
 //TODO	it("taskDetails analyzes module and interpolates it with 'usage details' template");
 
+	it("taskSummaries analyzes module and interpolates it with 'usage summary' template", function() {
+		expect(document.taskSummaries(module)).to.equal("" +
+			"* `foo`: Foo summary\n" +
+			"* `bar`: Bar summary\n\n"
+		);
+	});
+
 /*
 {{#each task}}
 # `{{signature}}`

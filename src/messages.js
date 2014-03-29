@@ -16,7 +16,7 @@ exports.DESCRIPTORS_OPTION_MUST_BE_OBJECT = "'descriptors' option must be an obj
 exports.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL = "'descriptors' option must not be null.";
 
 // Errors in module descriptors
-exports.EMPTY_MODULE = "Module doesn't contain any task.";
+exports.EMPTY_MODULE = "Module doesn't contain any tasks.";
 exports.NO_SUCH_TASK = "Module doesn't contain requested task.";
 
 exports.NO_TASK_DESCRIPTORS = "Task doesn't have any descriptors.";

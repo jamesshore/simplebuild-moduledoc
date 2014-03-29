@@ -1,8 +1,7 @@
 /* Copyright (c) 2014 James Shore - See README for license */
+"use strict";
 
 // This module interpolates variables into a handlebars template and returns the result
-
-"use strict";
 
 var handlebars = require("handlebars");
 var fs = require("fs");

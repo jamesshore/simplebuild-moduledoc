@@ -48,10 +48,31 @@ describe("moduledoc module", function() {
 		}
 	});
 
-	// TODO  it("defaults to writing to ./README.md");
+	it("defaults to writing to ./README.md", function() {
+		var TEST_FILE = "./README.md";
 
-	// TODO  it("fails appropriately when 'module' not defined
-	// TODO  it("fails appropriately when 'descriptors' not defined
+		var cwd = process.cwd();
+		process.chdir("./temp_files");
+		try {
+			moduledoc.createReadme({
+				module: module,
+				descriptors: moduleDescriptors
+			}, success, failure);
+			expectSuccess();
+
+			var expected = document.readme(moduleDescriptors, module);
+			var actual = fs.readFileSync(TEST_FILE, "utf8");
+			expect(expected).to.equal(actual);
+		}
+		finally {
+			if (fs.existsSync(TEST_FILE)) fs.unlinkSync(TEST_FILE);
+			process.chdir(cwd);
+		}
+	});
+
+	// TODO  it("fails appropriately when 'output' is not a string")
+	// TODO  it("fails appropriately when 'module' not defined")
+	// TODO  it("fails appropriately when 'descriptors' not defined")
 
 	function success() {
 		successArgs = Array.prototype.slice.call(arguments);

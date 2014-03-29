@@ -7,7 +7,9 @@ var fs = require("fs");
 var document = require("./document");
 
 exports.createReadme = function createReadme(options, success, failure) {
-	fs.writeFileSync(options.output, document.readme(options.descriptors, options.module), "utf8");
+	var output = options.output || "./README.md";
+
+	fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
 
 	return success();
 };

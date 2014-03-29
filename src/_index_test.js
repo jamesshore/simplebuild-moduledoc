@@ -34,12 +34,13 @@ describe("moduledoc module", function() {
 		try {
 			moduledoc.createReadme({
 				module: module,
+				descriptors: moduleDescriptors,
 				output: TEST_FILE
 			}, success, failure);
 			expectSuccess();
 
 			var expected = document.readme(moduleDescriptors, module);
-			var actual = fs.readFileSync(TEST_FILE);
+			var actual = fs.readFileSync(TEST_FILE, "utf8");
 			expect(expected).to.equal(actual);
 		}
 		finally {
@@ -49,6 +50,8 @@ describe("moduledoc module", function() {
 
 	// TODO  it("defaults to writing to ./readme.md");
 
+	// TODO  it("fails appropriately when 'module' not defined
+	// TODO  it("fails appropriately when 'descriptors' not defined
 
 	function success() {
 		successArgs = Array.prototype.slice.call(arguments);

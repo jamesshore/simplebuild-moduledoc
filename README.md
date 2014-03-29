@@ -1,4 +1,4 @@
-# moduledoc
+# simplebuild-moduledoc
 
 Autogenerate README files for simplebuild modules.
 
@@ -11,7 +11,7 @@ This README is an example of the output of this tool. It was generated from the 
 
 This is a Node.js library. Install Node, then:
 
-`npm install moduledoc` (add `--save` or `--save-dev` if you want)
+`npm install simplebuild-moduledoc` (add `--save` or `--save-dev` if you want)
 
 
 ## Usage

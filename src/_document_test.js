@@ -69,8 +69,6 @@ describe("template interpolation", function() {
 			"\n" +
 			document.usageSummary(module) + "\n" +
 			document.usageDetails(module) + "\n" +
-			"\n" +
-			"\n" +
 			"## About Simplebuild\n" +
 			"\n" +
 			"This library is a simplebuild module. In addition to being used as a standalone library (as described above), it can also be used with simplebuild extensions and mappers. For more information about simplebuild, see [the Simplebuild GitHub page](https://github.com/jamesshore/simplebuild).\n" +
@@ -123,6 +121,8 @@ describe("template interpolation", function() {
 			"* `success()`: called if `foo` finishes successfully.\n" +
 			"\n" +
 			"* `failure(message)`: called if `foo` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
+			"\n" +
+			"\n" +
 			"### `bar(options, success, failure)`\n" +
 			"\n" +
 			"Bar summary\n" +
@@ -131,7 +131,8 @@ describe("template interpolation", function() {
 			"\n" +
 			"* `success()`: called if `bar` finishes successfully.\n" +
 			"\n" +
-			"* `failure(message)`: called if `bar` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter."
+			"* `failure(message)`: called if `bar` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
+			"\n"
 		);
 	});
 

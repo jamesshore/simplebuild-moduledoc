@@ -19,12 +19,14 @@ exports.transformTask = function(module, key) {
 	var task = safeGet(module[key], messages.NO_SUCH_TASK, key);
 	var descriptors = safeGet(task.descriptors, messages.NO_TASK_DESCRIPTORS, key);
 	var description = safeGet(descriptors.description, messages.NO_TASK_DESCRIPTION, key);
+	var options = safeGet(descriptors.options, messages.NO_TASK_OPTIONS, key);
 
 	return {
 		name: key,
 		summary: exports.summarizeDescription(description),
 		description: description,
-		signature: key + "(options, success, failure)"
+		signature: key + "(options, success, failure)",
+		options: exports.transformOptions(options)
 	};
 };
 

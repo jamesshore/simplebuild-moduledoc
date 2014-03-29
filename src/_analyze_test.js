@@ -42,21 +42,31 @@ describe("Descriptor", function() {
 
 
 	describe("transformTask", function() {
-		it("translates task descriptors", function() {
-			var module = {
+		var module;
+
+		beforeEach(function() {
+			module = {
 				foo: {
 					descriptors: {
 						title: "Foo Task",
-						description: "This documents the 'Foo' task. The first sentence is the summary."
+						description: "This documents the 'Foo' task. The first sentence is the summary.",
+						options: {
+							bar: {
+								description: "This documents the 'bar' option."
+							}
+						}
 					}
 				}
 			};
+		});
 
+		it("translates task descriptors", function() {
 			expect(analyze.transformTask(module, "foo")).to.deep.equal({
 				name: "foo",
 				summary: "This documents the 'Foo' task.",
 				description: "This documents the 'Foo' task. The first sentence is the summary.",
-				signature: "foo(options, success, failure)"
+				signature: "foo(options, success, failure)",
+				options: analyze.transformOptions(module.foo.descriptors.options, "foo")
 			});
 		});
 
@@ -73,9 +83,17 @@ describe("Descriptor", function() {
 		});
 
 		it("throws exception if task doesn't have description", function() {
+			delete module.foo.descriptors.description;
 			expect(function() {
-				analyze.transformTask({ foo: { descriptors: {} } }, "foo");
+				analyze.transformTask(module, "foo");
 			}).to.throw(Error, messages.NO_TASK_DESCRIPTION + " [foo]");
+		});
+
+		it("throws exception if task doesn't have options", function() {
+			delete module.foo.descriptors.options;
+			expect(function() {
+				analyze.transformTask(module, "foo");
+			}).to.throw(Error, messages.NO_TASK_OPTIONS + " [foo]");
 		});
 	});
 
@@ -102,8 +120,6 @@ describe("Descriptor", function() {
 				}
 			]);
 		});
-
-		// todo: throws exception if doesn't have options descriptor
 
 		it("throws exception if option doesn't have description", function() {
 			expect(function() {

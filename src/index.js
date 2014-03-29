@@ -8,6 +8,9 @@ var document = require("./document");
 var messages = require("./messages");
 
 exports.createReadme = function createReadme(options, success, failure) {
+	if (typeof options !== "object") return failure(messages.OPTIONS_MUST_BE_OBJECT);
+	if (options === null) return failure(messages.OPTIONS_MUST_NOT_BE_NULL);
+
 	var output = options.output || "./README.md";
 	if (typeof output !== "string") return failure(messages.OUTPUT_FILE_MUST_BE_STRING);
 

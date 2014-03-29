@@ -80,6 +80,16 @@ describe("moduledoc module", function() {
 		expectFailure(messages.OUTPUT_FILE_MUST_BE_STRING);
 	});
 
+	it("fails when option variable isn't an object", function() {
+		moduledoc.createReadme("foo", success, failure);
+		expectFailure(messages.OPTIONS_MUST_BE_OBJECT);
+	});
+
+	it("fails when option variable is null", function() {
+		moduledoc.createReadme(null, success, failure);
+		expectFailure(messages.OPTIONS_MUST_NOT_BE_NULL);
+	});
+
 	it("fails when 'module' is not defined", function() {
 		moduledoc.createReadme({
 			descriptors: moduleDescriptors

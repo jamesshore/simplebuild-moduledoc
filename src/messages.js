@@ -15,11 +15,15 @@ exports.NO_DESCRIPTORS_OPTION = "Need 'descriptors' option describing the module
 exports.DESCRIPTORS_OPTION_MUST_BE_OBJECT = "'descriptors' option must be an object.";
 exports.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL = "'descriptors' option must not be null.";
 
-// Errors
+// Errors in module descriptors
 exports.EMPTY_MODULE = "Module doesn't contain any task.";
 exports.NO_SUCH_TASK = "Module doesn't contain requested task.";
+
 exports.NO_TASK_DESCRIPTORS = "Task doesn't have any descriptors.";
 exports.NO_TASK_DESCRIPTION = "Task doesn't have a description.";
+exports.NO_TASK_OPTIONS = "Task doesn't have an option descriptor.";
+
+exports.NO_OPTION_DESCRIPTION = "Option doesn't have a description.";
 
 // Descriptors
 exports.MODULE_DESCRIPTORS = {

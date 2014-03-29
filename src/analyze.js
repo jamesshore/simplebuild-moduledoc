@@ -16,9 +16,9 @@ exports.transformModule = function(module) {
 };
 
 exports.transformTask = function(module, key) {
-	var task = safeGet(module[key], messages.NO_SUCH_TASK);
-	var descriptors = safeGet(task.descriptors, messages.NO_TASK_DESCRIPTORS);
-	var description = safeGet(descriptors.description, messages.NO_TASK_DESCRIPTION);
+	var task = safeGet(module[key], messages.NO_SUCH_TASK, key);
+	var descriptors = safeGet(task.descriptors, messages.NO_TASK_DESCRIPTORS, key);
+	var description = safeGet(descriptors.description, messages.NO_TASK_DESCRIPTION, key);
 
 	return {
 		name: key,
@@ -26,18 +26,15 @@ exports.transformTask = function(module, key) {
 		description: description,
 		signature: key + "(options, success, failure)"
 	};
-
-	function safeGet(thing, error) {
-		if (thing === undefined) throw new Error(error + " [" + key + "]");
-		return thing;
-	}
 };
 
-exports.transformOptions = function(options) {
+exports.transformOptions = function(options, taskName) {
 	return Object.keys(options).map(function(key) {
+		var description = safeGet(options[key].description, messages.NO_OPTION_DESCRIPTION, taskName + ".options." + key);
+
 		return {
 			name: key,
-			description: options[key].description
+			description: description
 		};
 	});
 };
@@ -48,3 +45,8 @@ exports.summarizeDescription = function(description) {
 	if (match) return match[1];
 	else return description;
 };
+
+function safeGet(thing, error, key) {
+	if (thing === undefined) throw new Error(error + " [" + key + "]");
+	return thing;
+}

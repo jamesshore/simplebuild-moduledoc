@@ -91,7 +91,7 @@ describe("Descriptor", function() {
 				}
 			};
 
-			expect(analyze.transformOptions(options)).to.deep.equal([
+			expect(analyze.transformOptions(options, "task")).to.deep.equal([
 				{
 					name: "option1",
 					description: "Option 1 description."
@@ -103,7 +103,13 @@ describe("Descriptor", function() {
 			]);
 		});
 
-		// todo: throw exception if no description
+		// todo: throws exception if doesn't have options descriptor
+
+		it("throws exception if option doesn't have description", function() {
+			expect(function() {
+				analyze.transformOptions({ foo: {} }, "task");
+			}).to.throw(Error, messages.NO_OPTION_DESCRIPTION + " [task.options.foo]");
+		});
 	});
 
 

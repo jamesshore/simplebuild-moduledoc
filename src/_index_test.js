@@ -1,10 +1,26 @@
 // Copyright (c) 2014 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
 "use strict";
 
+var fs = require("fs");
 var expect = require("chai").expect;
 var moduledoc = require("./index.js");
+var document = require("./document.js");
 
 describe("moduledoc module", function() {
+	var module = {
+		foo: function() {},
+		bar: function() {}
+	};
+	module.foo.descriptors = { description: "Foo summary" };
+	module.bar.descriptors = { description: "Bar summary" };
+
+	var moduleDescriptors = {
+		name: "example-module",
+		summary: "A short summary",
+		description: "A detailed description",
+		copyright: "Example copyright"
+	};
+
 	var successArgs;
 	var failureArgs;
 
@@ -14,11 +30,24 @@ describe("moduledoc module", function() {
 	});
 
 	it("writes documentation to file", function() {
-		moduledoc.createReadme({
+		var TEST_FILE = "./temp_files/readme.md";
+		try {
+			moduledoc.createReadme({
+				module: module,
+				output: TEST_FILE
+			}, success, failure);
+			expectSuccess();
 
-		}, success, failure);
-		expectSuccess();
+			var expected = document.readme(moduleDescriptors, module);
+			var actual = fs.readFileSync(TEST_FILE);
+			expect(expected).to.equal(actual);
+		}
+		finally {
+			if (fs.existsSync(TEST_FILE)) fs.unlinkSync(TEST_FILE);
+		}
 	});
+
+	// TODO  it("defaults to writing to ./readme.md");
 
 
 	function success() {

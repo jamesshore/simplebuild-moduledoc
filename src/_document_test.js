@@ -118,9 +118,6 @@ describe("template interpolation", function() {
 		);
 	});
 
-
-	// todo: what about tasks with no options?
-
 	it("usage details", function() {
 		expect(document.usageDetails(module)).to.equal("\n" +
 			"### `foo(options, success, failure)`\n" +
@@ -140,7 +137,7 @@ describe("template interpolation", function() {
 			"\n" +
 			"Bar summary\n" +
 			"\n" +
-			"* `options`: an object containing the following properties:\n" +
+			"* `options`: an empty object (options may be added in the future)\n" +
 			"\n" +
 			"* `success()`: called if `bar` finishes successfully.\n" +
 			"\n" +

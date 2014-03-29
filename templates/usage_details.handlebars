@@ -3,9 +3,10 @@
 
 {{description}}
 
-* `options`: an object containing the following properties:
+{{#if options}}* `options`: an object containing the following properties:
 {{#each options}}    * `{{name}}`: {{description}}
-{{/each}}
+{{/each}}{{else}}* `options`: an empty object (options may be added in the future)
+{{/if}}
 * `success()`: called if `{{name}}` finishes successfully.
 
 * `failure(message)`: called if `{{name}}` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.

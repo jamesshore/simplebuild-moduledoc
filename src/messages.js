@@ -3,7 +3,9 @@
 
 // Messages
 exports.OUTPUT_FILE_MUST_BE_STRING = "Output file must be a string.";
-
+exports.NO_MODULE_OPTION = "Need 'module' option containing the simplebuild module to document.";
+exports.MODULE_OPTION_MUST_NOT_BE_NULL = "'module' option must not be null.";
+exports.MODULE_OPTION_MUST_BE_OBJECT = "'module' option must be an object containing task functions.";
 
 // Errors
 exports.EMPTY_MODULE = "Module doesn't contain any task.";

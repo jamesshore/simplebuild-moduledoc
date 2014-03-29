@@ -71,16 +71,38 @@ describe("moduledoc module", function() {
 		}
 	});
 
-	it("fails appropriately when 'output' is not a string", function() {
+	it("fails when 'output' is not a string", function() {
 		moduledoc.createReadme({
 			module: module,
-			descriptrs: moduleDescriptors,
+			descriptors: moduleDescriptors,
 			output: 99
 		}, success, failure);
 		expectFailure(messages.OUTPUT_FILE_MUST_BE_STRING);
 	});
 
-	// TODO  it("fails appropriately when 'module' not defined")
+	it("fails when 'module' is not defined", function() {
+		moduledoc.createReadme({
+			descriptors: moduleDescriptors
+		}, success, failure);
+		expectFailure(messages.NO_MODULE_OPTION);
+	});
+
+	it("fails when 'module' is null", function() {
+		moduledoc.createReadme({
+			module: null,
+			descriptors: moduleDescriptors
+		}, success, failure);
+		expectFailure(messages.MODULE_OPTION_MUST_NOT_BE_NULL);
+	});
+
+	it("fails when 'module' is not an object", function() {
+		moduledoc.createReadme({
+			module: 123,
+			descriptors: moduleDescriptors
+		}, success, failure);
+		expectFailure(messages.MODULE_OPTION_MUST_BE_OBJECT);
+	});
+
 	// TODO  it("fails appropriately when 'descriptors' not defined")
 
 	function success() {

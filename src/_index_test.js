@@ -48,7 +48,7 @@ describe("moduledoc module", function() {
 		}
 	});
 
-	// TODO  it("defaults to writing to ./readme.md");
+	// TODO  it("defaults to writing to ./README.md");
 
 	// TODO  it("fails appropriately when 'module' not defined
 	// TODO  it("fails appropriately when 'descriptors' not defined

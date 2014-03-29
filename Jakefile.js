@@ -3,10 +3,11 @@
 "use strict";
 
 var jshint = require("simplebuild-jshint");
+var moduledoc = require("./src");
 var Mocha = require("mocha");
 
 desc("Validate code (lint and test)");
-task("default", ["lint", "test"], function() {
+task("default", ["lint", "test", "document"], function() {
 	console.log("\n\nOK");
 });
 
@@ -20,7 +21,7 @@ task("lint", function() {
 }, { async: true });
 
 desc("Run tests");
-task("test", [], function() {
+task("test", function() {
 	var mocha = new Mocha({ui: "bdd"});
 	testFiles().forEach(mocha.addFile.bind(mocha));
 
@@ -32,6 +33,20 @@ task("test", [], function() {
 		if (failures) fail("Tests failed");
 		complete();
 	});
+}, {async: true});
+
+desc("Create readme");
+task("document", function() {
+	moduledoc.createReadme({
+		output: "./README.md",
+		module: moduledoc,
+		descriptors: {
+			name: "moduledoc",
+			summary: "Autogenerate README files for simplebuild modules.",
+			description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This library provides functions for autogenerating README files for simplebuild modules.",
+			copyright: "Copyright (c) 2014 James Shore"
+		}
+	}, complete, fail);
 }, {async: true});
 
 function testFiles() {

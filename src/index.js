@@ -11,3 +11,8 @@ exports.createReadme = function createReadme(options, success, failure) {
 
 	return success();
 };
+
+exports.createReadme.descriptors = {
+	title: "Create README",
+	description: "Create a README file for a Simplebuild module. The text of the README is generated from the module's task descriptors."
+};

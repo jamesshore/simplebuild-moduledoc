@@ -2,14 +2,14 @@
 
 Autogenerate README files for simplebuild modules.
 
-[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This library provides functions for autogenerating README files for simplebuild modules.
+[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.
 
 
 ## Installation
 
 This is a Node.js library. Install Node, then:
 
-`npm install moduledoc (add `--save` or `--save-dev` if you want)
+`npm install moduledoc` (add `--save` or `--save-dev` if you want)
 
 
 ## Usage

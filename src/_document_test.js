@@ -47,7 +47,7 @@ describe("template interpolation", function() {
 			"\n" +
 			"This is a Node.js library. Install Node, then:\n" +
 			"\n" +
-			"`npm install example-module (add `--save` or `--save-dev` if you want)\n" +
+			"`npm install example-module` (add `--save` or `--save-dev` if you want)\n" +
 			"\n" +
 			"\n" +
 			"## Usage\n" +

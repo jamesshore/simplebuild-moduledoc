@@ -43,7 +43,7 @@ task("document", function() {
 		descriptors: {
 			name: "moduledoc",
 			summary: "Autogenerate README files for simplebuild modules.",
-			description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This library provides functions for autogenerating README files for simplebuild modules.",
+			description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.",
 			copyright: "Copyright (c) 2014 James Shore"
 		}
 	}, complete, fail);

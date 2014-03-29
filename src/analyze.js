@@ -23,7 +23,8 @@ exports.transformTask = function(module, key) {
 	return {
 		name: key,
 		summary: exports.summarizeDescription(description),
-		description: description
+		description: description,
+		signature: key + "(options, success, failure)"
 	};
 
 	function safeGet(thing, error) {

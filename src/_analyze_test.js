@@ -55,8 +55,8 @@ describe("Descriptor", function() {
 			expect(analyze.transformTask(module, "foo")).to.deep.equal({
 				name: "foo",
 				summary: "This documents the 'Foo' task.",
-				description: "This documents the 'Foo' task. The first sentence is the summary."
-				// more TBD
+				description: "This documents the 'Foo' task. The first sentence is the summary.",
+				signature: "foo(options, success, failure)"
 			});
 		});
 

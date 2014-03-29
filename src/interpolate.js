@@ -7,7 +7,7 @@ var handlebars = require("handlebars");
 var fs = require("fs");
 
 exports.string = function(template, values) {
-	return handlebars.compile(template)(values);
+	return handlebars.compile(template, { noEscape: true })(values);
 };
 
 exports.file = function(filename, values) {

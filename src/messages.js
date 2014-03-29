@@ -7,6 +7,19 @@ exports.NO_SUCH_TASK = "Module doesn't contain requested task.";
 exports.NO_TASK_DESCRIPTORS = "Task doesn't have any descriptors.";
 exports.NO_TASK_DESCRIPTION = "Task doesn't have a description.";
 
+// Descriptors
+exports.MODULE_DESCRIPTORS = {
+	name: "moduledoc",
+	summary: "Autogenerate README files for simplebuild modules.",
+	description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.",
+	copyright: "Copyright (c) 2014 James Shore"
+};
+
+exports.CREATE_README_DESCRIPTORS = {
+	title: "Create README",
+	description: "Create a README file for a Simplebuild module. The text of the README is generated from the module's task descriptors."
+};
+
 //exports.VALIDATION_FAILED = "JSHint failed.";
 //exports.OPTIONS_MUST_BE_OBJECT = "Options parameter must be an object.";
 //exports.OPTIONS_MUST_NOT_BE_NULL = "Options parameter must not be null.";

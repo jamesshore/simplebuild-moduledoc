@@ -2,8 +2,9 @@
 /*global desc, task, jake, fail, complete, directory*/
 "use strict";
 
-var jshint = require("simplebuild-jshint");
 var moduledoc = require("./src");
+var messages = require("./src/messages.js");
+var jshint = require("simplebuild-jshint");
 var Mocha = require("mocha");
 
 desc("Validate code (lint and test)");
@@ -38,14 +39,8 @@ task("test", function() {
 desc("Create readme");
 task("document", function() {
 	moduledoc.createReadme({
-		output: "./README.md",
 		module: moduledoc,
-		descriptors: {
-			name: "moduledoc",
-			summary: "Autogenerate README files for simplebuild modules.",
-			description: "[Simplebuild](https://github.com/jamesshore/simplebuild) is a specification for universal JavaScript task automation. This module has tasks to help you generate README files and (eventually) other documentation. It takes advantage of standard Simplebuild descriptors so you don't have to repeat yourself.",
-			copyright: "Copyright (c) 2014 James Shore"
-		}
+		descriptors: messages.MODULE_DESCRIPTORS
 	}, complete, fail);
 }, {async: true});
 

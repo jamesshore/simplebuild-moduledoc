@@ -65,11 +65,10 @@ describe("template interpolation", function() {
 			"\n" +
 			"## Usage\n" +
 			"\n" +
-			"This library provides these functions:\n" +
+			"This library exports this API:\n" +
 			"\n" +
 			document.usageSummary(module) + "\n" +
-			"\n" +
-			"(TO BE DONE)\n" +
+			document.usageDetails(module) + "\n" +
 			"\n" +
 			"\n" +
 			"## Examples\n" +
@@ -114,7 +113,7 @@ describe("template interpolation", function() {
 	it("usage summary", function() {
 		expect(document.usageSummary(module)).to.equal("" +
 			"* `foo`: Foo summary\n" +
-			"* `bar`: Bar summary\n\n"
+			"* `bar`: Bar summary\n"
 		);
 	});
 
@@ -131,8 +130,6 @@ describe("template interpolation", function() {
 			"* `success()`: called if `foo` finishes successfully.\n" +
 			"\n" +
 			"* `failure(message)`: called if `foo` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
-			"\n" +
-			"\n" +
 			"### `bar(options, success, failure)`\n" +
 			"\n" +
 			"Bar summary\n" +
@@ -141,8 +138,7 @@ describe("template interpolation", function() {
 			"\n" +
 			"* `success()`: called if `bar` finishes successfully.\n" +
 			"\n" +
-			"* `failure(message)`: called if `bar` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.\n" +
-			"\n"
+			"* `failure(message)`: called if `bar` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter."
 		);
 	});
 

@@ -14,7 +14,7 @@ var USAGE_DETAILS = TEMPLATES_DIR + "/usage_details.handlebars";
 
 exports.readme = function(moduleDescriptors, module) {
 	moduleDescriptors.usageSummary = exports.usageSummary(module);
-	moduleDescriptors.usageDetails = "(TO BE DONE)";
+	moduleDescriptors.usageDetails = exports.usageDetails(module);
 	moduleDescriptors.examples = "(TO BE DONE)";
 
 	return interpolate.file(README, moduleDescriptors);

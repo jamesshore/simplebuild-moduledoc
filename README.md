@@ -14,13 +14,23 @@ This is a Node.js library. Install Node, then:
 
 ## Usage
 
-This library provides these functions:
+This library exports this API:
 
 * `createReadme`: Create a README file for a Simplebuild module.
 
 
+### `createReadme(options, success, failure)`
 
-(TO BE DONE)
+Create a README file for a Simplebuild module. The text of the README is generated from the module's task descriptors.
+
+* `options`: an object containing the following properties:
+    * `output`: Name of file to write README to. Defaults to ./README.md.
+    * `module`: The module to document. Must be a simplebuild module.
+    * `descriptors`: Module descriptors: name, summary, description, and copyright. `name` is the npm name of the module. `summary` is a one-sentence description of the module. `description` is a paragraph describing the module that picks up where `summary` leaves off. `copyright` is the copyright; e.g., 'Copyright (c) 2014 James Shore.'
+
+* `success()`: called if `createReadme` finishes successfully.
+
+* `failure(message)`: called if `createReadme` doesn't finish successfully. Detailed error messages (if any) are written to stdout and a summary error message is provided in the `message` parameter.
 
 
 ## Examples

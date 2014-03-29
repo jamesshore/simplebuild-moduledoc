@@ -71,6 +71,14 @@ describe("moduledoc module", function() {
 		}
 	});
 
+	it("converts exceptions to failures", function() {
+		moduledoc.createReadme({
+			module: {},
+			descriptors: moduleDescriptors
+		}, success, failure);
+		expectFailure(messages.EMPTY_MODULE);
+	});
+
 	it("fails when 'output' is not a string", function() {
 		moduledoc.createReadme({
 			module: module,

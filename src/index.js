@@ -22,8 +22,13 @@ exports.createReadme = function createReadme(options, success, failure) {
 	if (options.descriptors === null) return failure(messages.DESCRIPTORS_OPTION_MUST_NOT_BE_NULL);
 	if (typeof options.descriptors !== "object") return failure(messages.DESCRIPTORS_OPTION_MUST_BE_OBJECT);
 
-	fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
-	return success();
+	try {
+		fs.writeFileSync(output, document.readme(options.descriptors, options.module), "utf8");
+		return success();
+	}
+	catch (err) {
+		return failure(err.message);
+	}
 };
 
-exports.createReadme.descriptors = messages.CREATE_README_DESCRIPTORS;
+//exports.createReadme.descriptors = messages.CREATE_README_DESCRIPTORS;

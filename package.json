@@ -31,6 +31,7 @@
     "chai": "~1.8.1"
   },
   "dependencies": {
-    "simplebuild": "~0.2.0"
+    "simplebuild": "~0.2.0",
+    "handlebars": "^2.0.0-alpha.2"
   }
 }

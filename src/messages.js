@@ -35,7 +35,18 @@ exports.MODULE_DESCRIPTORS = {
 
 exports.CREATE_README_DESCRIPTORS = {
 	title: "Create README",
-	description: "Create a README file for a Simplebuild module. The text of the README is generated from the module's task descriptors."
+	description: "Create a README file for a Simplebuild module. The text of the README is generated from the module's task descriptors.",
+	options: {
+		output: {
+			description: "Name of file to write README to. Defaults to ./README.md."
+		},
+		module: {
+			description: "The module to document. Must be a simplebuild module."
+		},
+		descriptors: {
+			description: "Module descriptors: name, summary, description, and copyright. `name` is the npm name of the module. `summary` is a one-sentence description of the module. `description` is a paragraph describing the module that picks up where `summary` leaves off. `copyright` is the copyright; e.g., 'Copyright (c) 2014 James Shore.'"
+		}
+	}
 };
 
 //exports.VALIDATION_FAILED = "JSHint failed.";

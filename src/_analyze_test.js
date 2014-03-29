@@ -15,13 +15,11 @@ describe("Descriptor", function() {
 				baz: createModule()
 			};
 
-			expect(analyze.transformModule(module)).to.deep.equal({
-				task: [
-					analyze.transformTask(module, "foo"),
-					analyze.transformTask(module, "bar"),
-					analyze.transformTask(module, "baz")
-				]
-			});
+			expect(analyze.transformModule(module)).to.deep.equal([
+				analyze.transformTask(module, "foo"),
+				analyze.transformTask(module, "bar"),
+				analyze.transformTask(module, "baz")
+			]);
 
 			function createModule() {
 				var module = function() {};

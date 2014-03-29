@@ -12,9 +12,7 @@ exports.transformModule = function(module) {
 	var tasks = Object.keys(module);
 	if (tasks.length === 0) throw new Error(messages.EMPTY_MODULE);
 
-	return {
-		task: tasks.map(exports.transformTask.bind(null, module))
-	};
+	return tasks.map(exports.transformTask.bind(null, module));
 };
 
 exports.transformTask = function(module, key) {

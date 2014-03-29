@@ -8,7 +8,18 @@ var interpolate = require("./interpolate.js");
 
 var TEMPLATES = "./templates/";
 var USAGE_SUMMARY = TEMPLATES + "usage_summary.handlebars";
+var README = TEMPLATES + "readme.handlebars";
+
+exports.readme = function(moduleDescriptors, module) {
+	moduleDescriptors.usageSummary = exports.taskSummaries(module);
+	moduleDescriptors.usageDetails = "(TO BE DONE)";
+	moduleDescriptors.examples = "(TO BE DONE)";
+
+	return interpolate.file(README, moduleDescriptors);
+};
 
 exports.taskSummaries = function(module) {
-	return interpolate.file(USAGE_SUMMARY, analyze.transformModule(module));
+	return interpolate.file(USAGE_SUMMARY, {
+		task: analyze.transformModule(module)
+	});
 };

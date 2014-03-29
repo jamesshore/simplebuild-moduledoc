@@ -1,11 +1,11 @@
 {{#each task}}
 # `{{signature}}`
 
-{{documentation}}
+{{description}}
 
 * `options`: an object containing the following properties:
 {{#each options}}
-    * `{{name}}`: {{documentation}}
+    * `{{name}}`: {{description}}
 {{/each}}
 
 * `success()`: called if `{{name}}` finishes successfully.
